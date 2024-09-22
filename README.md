@@ -13,15 +13,15 @@ The project comprises two main components:
 ## Data Manual
 The data is stored in multiple structured tables (CSV files):
 
-**dim_date.csv:** Contains information on the date, including its classification as a weekend/weekday and week number.  
+**date.csv:** Contains information on the date, including its classification as a weekend/weekday and week number.  
 
-**dim_hotels.csv:** Includes property details such as property ID, name, category (business/luxury), and city.  
+**hotels.csv:** Includes property details such as property ID, name, category (business/luxury), and city.  
 
-**dim_rooms.csv:** Holds room information, including room ID and class (standard, elite, premium).  
+**rooms.csv:** Holds room information, including room ID and class (standard, elite, premium).  
 
-**fact_aggregated_bookings.csv:** Aggregated data on bookings, including total bookings, room capacity, and realization.  
+**aggregated_bookings.csv:** Aggregated data on bookings, including total bookings, room capacity, and realization.  
 
-**fact_bookings.csv:** Detailed information on each individual booking, such as booking date, number of guests, platform, and revenue realized.  
+**bookings.csv:** Detailed information on each individual booking, such as booking date, number of guests, platform, and revenue realized.  
 
 ## Data Cleaning, Manipulation, and Transformation Process
 The following steps outline how the data was processed in SQL to prepare it for analysis and visualization:
