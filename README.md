@@ -1,124 +1,74 @@
 # Hotel Operations Analysis and Dashboard
-## Introduction
-This project showcases an in-depth analysis of hotel revenue data, leveraging SQL for data cleaning, manipulation, and transformation, followed by a detailed visualization using Power BI. The aim is to provide actionable insights into hotel performance across various properties, cities, and booking platforms, with key performance indicators (KPIs) such as Revenue per Available Room (RevPAR), Occupancy Rate, and Average Daily Rate (ADR).
+## Background and Overview
+This project focuses on analyzing hotel performance data, using MySQL for data processing and Power BI for visualization. The goal is to derive valuable insights into key business metrics such as *Revenue per Available Room (RevPAR), Occupancy %, Average Daily Rate (ADR)*, and platform-based performance. The analysis is designed to help hotel management make informed decisions to optimize revenue, increase occupancy, and improve overall operational efficiency.
 
-## Overview
-The project comprises two main components:
+Insights and recommendations are provided on the following key areas:
 
-**Data Processing:** Executed in MySQL, involving data cleaning, transformation, and enhancement to ensure high-quality, analyzable data.  
+Revenue trends across properties, cities, and room categories.  
+Booking platform performance, comparing realisation and ADR across various platforms.  
+Occupancy patterns by day of the week and time period.  
+Business category dominance, analyzing its contribution to total revenue.  
+Cancellation rates and their impact on revenue realization.  
+## Data Structure Overview
+The data consists of five main tables used for analysis:
 
-**Power BI Dashboard:** Visualizing key performance metrics, trends, and comparisons for effective data-driven decision-making.
+**date.csv:** Contains date-related details, including the day type (weekday/weekend) and week number.
 
+**hotels.csv:** Provides information about hotel properties, including property ID, name, category (business/luxury), and city.
 
-## Data Manual
-The data is stored in multiple structured tables (CSV files):
+**rooms.csv:** Holds room details such as room ID and room class (standard, elite, premium).
 
-**date.csv:** Contains information on the date, including its classification as a weekend/weekday and week number.  
+**aggregated_bookings.csv:** Aggregated data on bookings, including total bookings, room capacity, and revenue realization.
 
-**hotels.csv:** Includes property details such as property ID, name, category (business/luxury), and city.  
+**bookings.csv:** Detailed booking records, containing booking dates, platform information, guest count, and revenue generated.
 
-**rooms.csv:** Holds room information, including room ID and class (standard, elite, premium).  
+These tables were cleaned, transformed, and integrated using MySQL to ensure high-quality, analyzable data. The Power BI dashboard was then built to visualize key metrics and trends, offering a holistic view of hotel performance.
 
-**aggregated_bookings.csv:** Aggregated data on bookings, including total bookings, room capacity, and realization.  
+##  Executive Summary
+### Overview of Findings
+The analysis of hotel revenue reveals several key metrics:
 
-**bookings.csv:** Detailed information on each individual booking, such as booking date, number of guests, platform, and revenue realized.  
+**Total Revenue:** $1.69 billion, driven largely by business category hotels, which contribute 61.6% of the revenue.
 
-## Data Cleaning, Manipulation, and Transformation Process
-The following steps outline how the data was processed in SQL to prepare it for analysis and visualization:
+**RevPAR (Revenue per Available Room):** Averaging 7,337 across all properties.
 
-### Duplicate Removal
-The initial step involved identifying and removing duplicate entries in the fact tables, particularly in the fact_bookings table. Duplicate records can skew aggregated results, such as total revenue and booking counts, leading to inaccurate insights. Using SQL, we compared key fields like booking_id, property_id, and check_in_date to remove any duplicates.
+**Occupancy %:** An average occupancy rate of 57.8%, with a noticeable increase during weekends.
 
-### Handling Missing Values
-Missing values can distort analyses, especially in critical fields such as ratings and revenue. The data cleaning process addressed missing values in:
+**ADR (Average Daily Rate):** Averaging $12.7K, with business category hotels outperforming luxury hotels in most cities.
 
-**Ratings:** Missing ratings were imputed with a default value (e.g., 0), assuming that no rating was provided by the guest.
+**Platform Performance:** Platforms like Logtrip and Direct Online exhibit the highest realization rates (70%+) and ADR (above $12.6K), while other platforms, such as Journey, lag behind.
 
-**Revenue Realized:** If the realized revenue was missing, we assigned it the value of revenue generated, assuming the entire expected revenue was realized for that booking. This step ensured that the absence of values did not interfere with aggregations or calculations.
+### Trends
+**Weekend vs. Weekday:** Occupancy rates are consistently higher on weekends (62.6%) compared to weekdays (55.8%), suggesting a preference for leisure stays.
 
-### Data Transformation
-To enhance the dataset for deeper analysis, several transformations were performed:
+**Business Dominance:** Business category hotels outperform luxury hotels in terms of both revenue and occupancy, highlighting their significance in the portfolio.
 
-**Date Format Standardization:** Date fields were converted into a consistent format to ensure smooth date-based queries and analysis. This allowed for easy weekly, monthly, or yearly breakdowns.  
+**Platform Utilization:** Direct online booking platforms show a higher realization rate, while some third-party platforms have higher cancellation rates, affecting overall performance.
 
-**Utilization Rate Calculation:** A new column was created to capture the room utilization rate, which is the percentage of rooms sold relative to the total capacity. This metric is key to understanding operational efficiency.  
+### Performance
+**Top Performing Properties:** Hotels in Delhi and Mumbai consistently show higher RevPAR, occupancy, and ADR compared to properties in smaller cities.
 
-**Booking Length:** For each booking, the length of stay was calculated by finding the difference between the check-in and checkout dates. This provides insight into average stay duration and helps evaluate guest behavior patterns.  
+**Cancellation Rates:** The average cancellation rate across all platforms stands at 24.8%, impacting realized revenue.
+## Insights Deep Dive
+### Insight 1: Weekend Performance
+Over the analysis period, weekend performance emerged as a key revenue driver, with weekend occupancy rates peaking at 62.6%, significantly higher than weekday occupancy at 55.8%. This translated into a *RevPAR* of 7,972 for weekends compared to 7,083 on weekdays. The higher weekend occupancy has been consistent historically, indicating that leisure travelers primarily book stays over the weekend, while weekdays are relatively underutilized.
+### Insight 2: Business Hotel Dominance
+Business category hotels contributed 61.6% of total revenue, outperforming luxury hotels, which accounted for only 38.4%. Business hotels maintained an average *ADR* of $12.8K, slightly higher than the luxury segment, showing strong demand from corporate travelers, particularly in major business hubs like Delhi and Mumbai. Historically, business hotels have consistently dominated revenue generation, suggesting that they cater to a steady stream of business travelers throughout the year.
+### Insight 3: Platform Performance
+In terms of platform performance, Logtrip and Direct Online platforms delivered the highest revenue realization rates at 70.6%, with an *ADR* of $12.8K, while maintaining low cancellation rates of 20.1%. These platforms have been leading in terms of revenue reliability over the past several months, indicating their effectiveness in securing high-value bookings with minimal cancellations. In contrast, third-party platforms like Journey exhibited higher cancellation rates of 24.4%, which significantly affected overall revenue realization.
+### Insight 4: Cancellation Impact
+Despite strong weekend and platform-based performance, the overall cancellation rate across all platforms averaged 24.8%, reducing the total revenue realization to 70.1%. High cancellation rates, especially on third-party platforms, have been a persistent issue, historically leading to a drop in realized revenue and emphasizing the need for better booking management and customer engagement strategies.
+## Recommendations
+### Recommendation 1: Enhance Weekday Promotions
+ Given that weekend occupancy rates are at 62.6% while weekday occupancy lags at 55.8%, the company should launch targeted weekday promotions. These could include discounted corporate packages or loyalty incentives for extended stays. By increasing weekday occupancy by 5% (targeting 60.8%), the company could potentially increase overall *RevPAR* from 7,083 to 7,400 during weekdays, adding significant incremental revenue across properties.
+### Recommendation 2: Invest in Business Hotels
+Business category hotels, which generate 61.6% of total revenue and maintain a strong ADR of $12.8K, should receive further investment in corporate-focused amenities. Upgrades such as conference facilities, high-speed internet, and business lounges could further enhance their appeal. By increasing *ADR* by 3% to $13.2K and occupancy by 5% in business hotels, the company can unlock additional revenue in high-demand markets such as Delhi and Mumbai.
 
-### Data Integration and Joins
+### Recommendation 3: Focus on High-Performing Platforms
+The current average cancellation rate of 24.8% across all platforms is significantly affecting revenue realization. Implement stricter cancellation policies on underperforming platforms, such as "Journey," which shows a cancellation rate of 24.4%. By reducing the overall cancellation rate to 20%, the company could raise its revenue realization from 70.1% to 74%, leading to an increase in realized revenue by as much as $50 million annually.
 
-After cleaning and transforming individual tables, the next step was to integrate the data by joining tables on common fields. For example:
+### Recommendation 4: Manage Cancellation Rates
+To reduce the high cancellation rates (24.8%), hotels should consider implementing stricter cancellation policies on platforms that are prone to cancellations, or offer incentives for guests to complete their bookings. Proactive customer engagement, such as follow-up emails or discount offers for finalizing bookings, could mitigate cancellations. 
 
-**Property Information:** The fact_bookings table was joined with dim_hotels to bring in hotel-related attributes like property name, category, and city.  
-
-**Room Information:** The dim_rooms table was joined to categorize bookings based on room type. This integration allowed for a comprehensive dataset that includes not only booking details but also context about the property and room type.  
-
-### Aggregations and Derived Metrics
-Once the data was integrated, key aggregations were performed:
-
-**Revenue per Property:** We aggregated revenue across properties to provide a consolidated view of total earnings by hotel.  
-
-**Platform-Wise Performance:** Metrics such as realized revenue and ADR were calculated based on the platform used for bookings (e.g., direct online, third-party platforms). This helped assess the performance and reliability of each platform.  
-
-**Occupancy Trends:** Trends in occupancy percentage, RevPAR, and ADR were derived based on different time periods (weekly or monthly) to identify patterns in hotel performance over time.  
-
-## Foreign Key Constraints and Data Integrity
-Foreign key constraints were applied to ensure referential integrity between the fact tables and dimension tables. This guarantees that each booking is associated with valid properties and room categories, preventing orphaned records and ensuring accurate data relationships.
-
-## The Dashboard
-
-### Key Performance Indicators (KPIs):  
-
-**Revenue:** The total revenue generated across all properties.  
-
-**RevPAR:** Revenue per available room, a key metric for assessing hotel profitability.  
-
-**DSRN:** Daily sellable room nights, showing the total number of room nights that were available for sale.  
-
-**Occupancy %:** The proportion of available rooms that were occupied.  
-
-**ADR:** Average Daily Rate, indicating the average rate per booked room.  
-
-**Realisation %:** The percentage of expected revenue that was realized from bookings.  
-
-**Cancellation %:** The percentage of total bookings that were canceled.  
-
-**Average Rating:** Guest satisfaction measured through average ratings.  
-
-### Dashboard Features:
-
-**Filters:** The dashboard allows filtering by city and room type to drill down into specific subsets of the data.  
-
-**Trend Charts:** Visualize week-on-week performance of key metrics like RevPAR, ADR, and Occupancy % to identify patterns and seasonality.  
-
-**Revenue Breakdown by Category:** Shows the contribution of business and luxury categories to total revenue.  
-
-**Platform Comparison:** Realisation % and ADR are compared across booking platforms such as direct online and third-party services.  
-
-## Analysis
-
-From the analysis of the data, several trends and patterns emerge:
-
-**Weekend vs. Weekday Performance:** Occupancy and RevPAR tend to be higher on weekends, suggesting a clear distinction in guest booking behavior.  
-
-**Business vs. Luxury Category:** Business category hotels contribute the majority of the revenue, while luxury hotels contribute less but still play a significant role.  
-
-**Platform Effectiveness:** Certain booking platforms, such as "Logtrip" and "Direct Online," show higher realisation rates and ADR, indicating their reliability and potential for higher-value bookings.  
-
-## Insights and Recommendations
-
-### Insights:
-
-**Maximized Weekend Occupancy:** The higher weekend occupancy indicates that guests prefer weekend stays. This presents an opportunity to offer packages or promotions to increase weekday bookings.  
-
-**Business Category Dominance:** The business category generates a larger portion of revenue, likely driven by corporate bookings and events.  
-
-**Booking Platform Performance:** Platforms like "Logtrip" and "Direct Online" outperform others in terms of ADR and realisation rate, suggesting that they should be prioritized in the hotel’s distribution strategy.  
-
-### Recommendations:
-
-**Enhance Weekday Promotions:** To bridge the gap between weekend and weekday performance, hotels can create promotions targeted at extending stays into weekdays or offering discounted rates for mid-week stays.  
-
-**Expand Business Amenities:** Given the strong performance of business category hotels, expanding corporate-oriented services (e.g., business centers, high-speed internet, conference rooms) could boost revenue further. 
-
-**Focus on High-Performing Platforms:** Strengthening relationships with high-performing booking platforms or increasing marketing efforts on these platforms could enhance revenue realization and occupancy rates.  
+### Recommendation 5: Expand Marketing for Luxury Segment
+Expand Marketing for Luxury Segment: While business hotels outperform, the luxury segment contributes 38.4% of revenue and can still provide growth opportunities through targeted marketing campaigns. Increasing occupancy in luxury hotels by 5% (from 65% to 70%) could drive higher revenues, especially by leveraging exclusive offers for high-end travelers. Additionally, increasing *ADR* by 2% in luxury properties could push the overall average higher, adding an estimated $10 million in additional annual revenue.
