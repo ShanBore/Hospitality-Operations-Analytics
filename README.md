@@ -46,7 +46,7 @@ The analysis of hotel revenue reveals several key metrics:
 **Platform Utilization:** Direct online booking platforms show a higher realization rate, while some third-party platforms have higher cancellation rates, affecting overall performance.
 
 ### Performance
-**Top Performing Properties:** Hotels in Delhi and Mumbai consistently show higher RevPAR, occupancy, and ADR compared to properties in smaller cities.
+**Top Performing Properties:** Hotels in Delhi and Mumbai consistently show higher *RevPAR*, occupancy, and *ADR* compared to properties in smaller cities.
 
 **Cancellation Rates:** The average cancellation rate across all platforms stands at 24.8%, impacting realized revenue.
 ## Insights Deep Dive
@@ -62,7 +62,7 @@ Despite strong weekend and platform-based performance, the overall cancellation 
 ### Recommendation 1: Enhance Weekday Promotions
  Given that weekend occupancy rates are at 62.6% while weekday occupancy lags at 55.8%, the company should launch targeted weekday promotions. These could include discounted corporate packages or loyalty incentives for extended stays. By increasing weekday occupancy by 5% (targeting 60.8%), the company could potentially increase overall *RevPAR* from 7,083 to 7,400 during weekdays, adding significant incremental revenue across properties.
 ### Recommendation 2: Invest in Business Hotels
-Business category hotels, which generate 61.6% of total revenue and maintain a strong ADR of $12.8K, should receive further investment in corporate-focused amenities. Upgrades such as conference facilities, high-speed internet, and business lounges could further enhance their appeal. By increasing *ADR* by 3% to $13.2K and occupancy by 5% in business hotels, the company can unlock additional revenue in high-demand markets such as Delhi and Mumbai.
+Business category hotels, which generate 61.6% of total revenue and maintain a strong *ADR* of $12.8K, should receive further investment in corporate-focused amenities. Upgrades such as conference facilities, high-speed internet, and business lounges could further enhance their appeal. By increasing *ADR* by 3% to $13.2K and occupancy by 5% in business hotels, the company can unlock additional revenue in high-demand markets such as Delhi and Mumbai.
 
 ### Recommendation 3: Focus on High-Performing Platforms
 The current average cancellation rate of 24.8% across all platforms is significantly affecting revenue realization. Implement stricter cancellation policies on underperforming platforms, such as "Journey," which shows a cancellation rate of 24.4%. By reducing the overall cancellation rate to 20%, the company could raise its revenue realization from 70.1% to 74%, leading to an increase in realized revenue by as much as $50 million annually.
